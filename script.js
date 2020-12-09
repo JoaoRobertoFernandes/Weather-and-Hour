@@ -92,3 +92,18 @@ tempElement.addEventListener("click", function() {
     }
 });
 /*-----------Click----------*/
+
+/*-----------Clock----------*/
+setInterval(setClock, 1000);
+
+const hours = document.querySelector(".clock-wrap"); 
+function setClock() {
+    const currentDate = new Date();
+    hours = currentDate.getHours
+}
+/*-----------Clock----------*/
+
+/*-----------Time----------*/
+function displayClock() {
+    hours.innerHTML = `${hours}`;
+}
