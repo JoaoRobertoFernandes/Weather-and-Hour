@@ -94,16 +94,21 @@ tempElement.addEventListener("click", function() {
 /*-----------Click----------*/
 
 /*-----------Clock----------*/
+const hour = document.querySelector("[data-hour]");
+const minutes = document.querySelector("[data-minutes]");
+
+
+
 setInterval(setClock, 1000);
 
-const hours = document.querySelector(".clock-wrap"); 
 function setClock() {
     const currentDate = new Date();
-    hours = currentDate.getHours
+    const currentHour = currentDate.getHours();
+    const currentMinutes = currentDate.getMinutes();
+    hour.innerHTML = ` ${currentHour}:${currentMinutes} `;
 }
+
 /*-----------Clock----------*/
 
-/*-----------Time----------*/
-function displayClock() {
-    hours.innerHTML = `${hours}`;
-}
+
+
