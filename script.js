@@ -5,7 +5,8 @@ var inputValue = document.querySelector(".inputValue")
 
 /*----------Elements----------*/
 const notificationElement = document.querySelector(".notification");
-const tempElement = document.querySelector(".weather");
+const tempElementC = document.querySelector(".weather-c");
+const tempElementF = document.querySelector(".weather-f");
 const descElement = document.querySelector(".date");
 const locationElement = document.querySelector(".city");
 /*----------Elements----------*/
@@ -66,54 +67,32 @@ function getWeather(latitude, longitude) {
 
 /*----------Weather to UI----------*/
 function displayWeather() {
-    tempElement.innerHTML = `${weather.temperature.value}°C`;
+    tempElementC.innerHTML = `${weather.temperature.value}°C`;
+    tempElementF.innerHTML = `${(weather.temperature.value * 9/5) + 32}°F`;
     descElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}`;
 }
 /*----------Weather to UI----------*/
 
-/*-----------Conversion----------*/
-function celsiusToFahrenheit(temperature) {
-    return (temperature * 9/5) + 32;
-}
-
-/*-----------Conversion----------*/
-
-/*-----------Click----------*/
-function click() {
-tempElement.addEventListener("click", function() {
-    if(weather.temperature.value === undefined) return;
-
-    if(weather.temperature.unit == "celsius"){
-        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
-        fahrenheit = Math.floor(fahrenheit);
-
-        tempElement.innerHTML = `${fahrenheit}°F`;
-        weather.temperature.unit = "fahrenheit";
-    }else {
-        tempElement.innerHTML = `${weather.temperature.value}°C`;
-        weather.temperature.unit = "celsius";
-    }
-});
-}
-click();
-/*-----------Click----------*/
 
 /*-----------Search----------*/
+
 button.addEventListener('click', function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid='+Key)
     .then(response => response.json())
     .then(data => {
-        console.log(data);
         let temp = data['main']['temp'] + "°F";
         let fahrenheit = ((parseInt(temp)-273)*9/5)+32;
+        let celsius = (parseInt(temp)-273);
         
         locationElement.innerHTML = data["name"];
-        tempElement.innerHTML = fahrenheit + "°F";
+        tempElementF.innerHTML = fahrenheit + "°F";
+        tempElementC.innerHTML = celsius + "°C";
         descElement.innerHTML = data['weather'][0]['description'];
     })
 .catch(err => alert("Wrong city name!"))
 })
+console.log(button);
 /*-----------Search----------*/
 
 
