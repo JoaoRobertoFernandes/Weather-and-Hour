@@ -12,7 +12,21 @@ body{
     overflow: hidden;
 }
 
+.input{
+    position: absolute;
+    top: 180px;
+}
+.input input{
+    border: none;
+    outline: 0;
+}
 
+.weather-Hours{
+    background: #ffffff;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.452);
+}
 /*----------Search Box----------*/
 header{
     display: flex;

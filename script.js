@@ -1,5 +1,7 @@
 const Kelvin = 273;
 const Key = "5fd719aedde620fdad6231f675e4076a";
+var button = document.querySelector(".button")
+var inputValue = document.querySelector(".inputValue")
 
 /*----------Elements----------*/
 const notificationElement = document.querySelector(".notification");
@@ -74,9 +76,11 @@ function displayWeather() {
 function celsiusToFahrenheit(temperature) {
     return (temperature * 9/5) + 32;
 }
+
 /*-----------Conversion----------*/
 
 /*-----------Click----------*/
+function click() {
 tempElement.addEventListener("click", function() {
     if(weather.temperature.value === undefined) return;
 
@@ -91,7 +95,29 @@ tempElement.addEventListener("click", function() {
         weather.temperature.unit = "celsius";
     }
 });
+}
+click();
 /*-----------Click----------*/
+
+/*-----------Search----------*/
+button.addEventListener('click', function(){
+    fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid='+Key)
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        let temp = data['main']['temp'] + "°F";
+        let fahrenheit = ((parseInt(temp)-273)*9/5)+32;
+        
+        locationElement.innerHTML = data["name"];
+        tempElement.innerHTML = fahrenheit + "°F";
+        descElement.innerHTML = data['weather'][0]['description'];
+    })
+.catch(err => alert("Wrong city name!"))
+})
+/*-----------Search----------*/
+
+
+
 
 /*-----------Clock----------*/
 const hour = document.querySelector("[data-hour]");
