@@ -15,11 +15,40 @@ body{
 .input{
     position: absolute;
     top: 180px;
+    display: flex;
+    
 }
 .input input{
     border: none;
     outline: 0;
 }
+
+.inputValue{
+    height: 29px;
+    position: relative;
+    top: 1px;
+    border-radius: 4px 4px;
+}
+.input-icon{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.icon{
+    padding: 10px;
+    min-width: 40px;
+}
+.button{
+    width: 100%;
+    width: 40px;
+    height: 30px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    align-items: center;
+    position: absolute;
+    right: -10px;
+}
+
 
 .weather-Hours{
     background: #ffffff;

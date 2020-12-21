@@ -81,6 +81,7 @@ button.addEventListener('click', function(){
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+inputValue.value+'&appid='+Key)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         let temp = data['main']['temp'] + "°F";
         let fahrenheit = ((parseInt(temp)-273)*9/5)+32;
         let celsius = (parseInt(temp)-273);
@@ -92,7 +93,6 @@ button.addEventListener('click', function(){
     })
 .catch(err => alert("Wrong city name!"))
 })
-console.log(button);
 /*-----------Search----------*/
 
 
